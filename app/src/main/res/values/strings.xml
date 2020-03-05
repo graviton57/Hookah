@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Hookah</string>
+
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="menu_hookahs">Кальяны</string>
+    <string name="menu_my_orders">Мои заказы</string>
+    <string name="menu_feedback">Связь с разработчиками</string>
+    <string name="menu_author">Я - Кальянщик</string>
+
 </resources>
