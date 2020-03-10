@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "948437535509",
+    "firebase_url": "https://hookah-d81af.firebaseio.com",
+    "project_id": "hookah-d81af",
+    "storage_bucket": "hookah-d81af.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:948437535509:android:127babba0e4259b3c9f71c",
+        "android_client_info": {
+          "package_name": "com.bshtef.hookah"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "948437535509-h1mt82f6id5oud894fo6ipffif5g0oj3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2ZsRDG9BWDIIkAd0W59kygDzLcml_7iE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "948437535509-h1mt82f6id5oud894fo6ipffif5g0oj3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
