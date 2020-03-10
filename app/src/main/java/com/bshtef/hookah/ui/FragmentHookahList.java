@@ -1,4 +1,4 @@
-package com.bshtef.hookah;
+package com.bshtef.hookah.ui;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.bshtef.hookah.R;
 
 public class FragmentHookahList extends Fragment {
 

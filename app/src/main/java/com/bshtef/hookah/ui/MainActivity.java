@@ -1,4 +1,4 @@
-package com.bshtef.hookah;
+package com.bshtef.hookah.ui;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.bshtef.hookah.R;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
