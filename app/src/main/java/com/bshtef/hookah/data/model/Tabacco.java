@@ -1,6 +1,6 @@
 package com.bshtef.hookah.data.model;
 
-class Tabacco {
+public class Tabacco {
     private int id;
     private String name;
     private String description;

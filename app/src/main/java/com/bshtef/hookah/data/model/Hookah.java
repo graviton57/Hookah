@@ -9,10 +9,50 @@ public class Hookah {
     private String imageUrl;
     private int price;
     private int pipeLength;
-    private int height;   // thinking about that
-    private int  mouthpieceCount;
+    private int height;                                                      // thinking about that
+    private int mouthpieceCount;
     private int coalCount;
     private boolean forceps;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
 
     public int getPipeLength() {
         return pipeLength;
@@ -20,6 +60,14 @@ public class Hookah {
 
     public void setPipeLength(int pipeLength) {
         this.pipeLength = pipeLength;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
     }
 
     public int getMouthpieceCount() {
@@ -44,73 +92,5 @@ public class Hookah {
 
     public void setForceps(boolean forceps) {
         this.forceps = forceps;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public int getHookahPipeLength() {
-        return pipeLength;
-    }
-
-    public void setHookahPipeLength(int hookahPipeLength) {
-        this.pipeLength = hookahPipeLength;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
-    public List<Tabacco> getTabacco() {
-        return tabacco;
-    }
-
-    public void setTabacco(List<Tabacco> tabacco) {
-        this.tabacco = tabacco;
-    }
-
-
-    private List<Tabacco> tabacco;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }
