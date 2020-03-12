@@ -12,6 +12,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bshtef.hookah.R;
 import com.google.android.material.navigation.NavigationView;
@@ -21,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawer;
     private Toolbar toolbar;
     private ActionBarDrawerToggle drawerToggle;
+    private RecyclerView recyclerView;
+    private HookahAdapter adapter;
 
     //region ******************** OVERRIDE *********************************************************
 
