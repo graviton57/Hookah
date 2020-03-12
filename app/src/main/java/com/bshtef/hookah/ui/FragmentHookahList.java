@@ -1,69 +1,62 @@
 package com.bshtef.hookah.ui;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bshtef.hookah.R;
+import com.bshtef.hookah.data.core.interfaces.ITaskResult;
 import com.bshtef.hookah.data.model.Hookah;
-import com.bshtef.hookah.data.repository.dummy.HookahsRepository;
+import com.bshtef.hookah.data.data.hookahs.HookahsRepository;
+import com.bshtef.hookah.ui.base.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FragmentHookahList extends Fragment {
+public class FragmentHookahList extends BaseFragment {
 
     private RecyclerView recyclerView;
     private ProgressBar progressBar;
     private HookahAdapter adapter;
+    private HookahsRepository repository;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_hookah_list, container, false);
+    protected int getLayoutId() {
+        return R.layout.fragment_hookah_list;
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    protected void init() {
+        recyclerView = findView(R.id.rv);
+        progressBar = findView(R.id.progress);
 
-        recyclerView =  view.findViewById(R.id.rv);
-        progressBar = view.findViewById(R.id.progress);
+        initList();
+        initRepository();
+    }
+
+    private void initList() {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-
-        adapter = new HookahAdapter(new ArrayList<Hookah>(), new HookahAdapter.ClickListener(){
-            @Override
-            public void click(Hookah hookah) {
-
-            }
+        adapter = new HookahAdapter(new ArrayList<>(), hookah -> {
         });
-
         recyclerView.setAdapter(adapter);
+    }
 
-        HookahsRepository repository = new HookahsRepository(new HookahsRepository.ItemsListener() {
+    private void initRepository() {
+        repository = HookahsRepository.getInstance();
+        repository.setListCallback(new ITaskResult<List<Hookah>>() {
             @Override
-            public void success(List<Hookah> hookahs) {
-                adapter.setArticles(hookahs);
-                recyclerView.setVisibility(View.VISIBLE);
-                progressBar.setVisibility(View.GONE);
+            public void result(@Nullable List<Hookah> result) {
+                adapter.setArticles(result);
             }
 
             @Override
-            public void error(String message) {
+            public void error(@NonNull String error) {
 
             }
         });
-
         repository.getItems();
-
     }
 }

@@ -8,4 +8,6 @@
     <string name="menu_feedback">Связь с разработчиками</string>
     <string name="menu_author">Я - Кальянщик</string>
 
+    <string name="price">%s UAH</string>
+
 </resources>

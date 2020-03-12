@@ -5,14 +5,15 @@
 
     <ProgressBar
         android:id="@+id/progress"
+        android:visibility="invisible"
         android:layout_width="wrap_content"
-        android:indeterminateTint="@color/colorBlack"
         android:layout_gravity="center"
         android:layout_height="wrap_content"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
-        android:visibility="gone"
+        android:paddingTop="8dp"
+        android:clipToPadding="false"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

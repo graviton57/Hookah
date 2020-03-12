@@ -1,15 +1,14 @@
 package com.bshtef.hookah.data.model;
 
-import java.util.List;
-
 public class Hookah {
+
     private String id;
     private String name;
     private String description;
     private String imageUrl;
     private int price;
     private int pipeLength;
-    private int height;                                                      // thinking about that
+    private int height;
     private int mouthpieceCount;
     private int coalCount;
     private boolean forceps;

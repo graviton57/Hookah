@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bshtef.hookah.R;
 import com.bshtef.hookah.data.model.Hookah;
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -52,26 +53,27 @@ public class HookahAdapter extends RecyclerView.Adapter<HookahAdapter.HookahView
 
     static class HookahViewHolder extends RecyclerView.ViewHolder {
 
-        private ImageView imageView;
+        private ImageView image;
         private TextView title;
         private TextView description;
+        private TextView price;
 
         HookahViewHolder(View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.hookah_picture);
-            title = itemView.findViewById(R.id.title);
-            description = itemView.findViewById(R.id.hookah_description);
+            image = itemView.findViewById(R.id.image);
+            title = itemView.findViewById(R.id.name);
+            description = itemView.findViewById(R.id.desc);
+            price = itemView.findViewById(R.id.price);
         }
 
         void bind(final Hookah hookah, final ClickListener listener){
             title.setText(hookah.getName());
             description.setText(hookah.getDescription());
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.click(hookah);
-                }
-            });
+            price.setText(itemView.getContext().getString(R.string.price, String.valueOf(hookah.getPrice())));
+
+            Glide.with(itemView).load(hookah.getImageUrl()).into(image);
+
+            itemView.setOnClickListener(v -> listener.click(hookah));
         }
     }
 }
