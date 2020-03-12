@@ -31,7 +31,7 @@ public class DummyData {
         hookahsImageUrls.add("https://st4.depositphotos.com/24664374/28220/i/450/depositphotos_282207076-stock-photo-hookahs-hookahs-for-smoking-accessories.jpg");
         hookahsImageUrls.add("https://s.057.ua/section/promonewsintext/upload/images/promo/intext/000/051/011/kalyan_5d31d2aec9318.jpg");
         hookahsImageUrls.add("https://mirk.com.ua/image/catalog/Blog/hookah/119-65286-1acd4d08f7e94765912431ec5e498193.jpg");
-        hookahsImageUrls.add("https://hookah-lovers.com.ua/image/data/benefit/D3Ahv-tP4GzOhD3WuVcDT3_h7bYMUZR1peai_Y1OSDBU9PiAi0JQ-2zWRow0hoC0i-9FX-aYfCE=.jpg");
+        hookahsImageUrls.add("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTtHDn3-8q35TBU-S37NMOWFk495isFnltevj5_LpLlVkSIotEf");
         hookahsImageUrls.add("https://lh3.googleusercontent.com/proxy/1M34Fe7d75BTJ9CV5IB8Xdw4h9nFjjSmYxV1c_BqmwsP_yaKfCNclkM01KNgBlOWdQU06lPTNE0wNVLpxjGVPQ");
         hookahsImageUrls.add("https://st3.depositphotos.com/11481516/19019/i/450/depositphotos_190194714-stock-photo-group-of-red-hookahs-shisha.jpg");
 

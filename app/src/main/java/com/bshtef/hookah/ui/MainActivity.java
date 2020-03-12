@@ -3,6 +3,7 @@ package com.bshtef.hookah.ui;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -12,7 +13,6 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.bshtef.hookah.R;
 import com.google.android.material.navigation.NavigationView;
@@ -22,8 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawer;
     private Toolbar toolbar;
     private ActionBarDrawerToggle drawerToggle;
-    private RecyclerView recyclerView;
-    private HookahAdapter adapter;
+    private Fragment currentFragment;
 
     //region ******************** OVERRIDE *********************************************************
 
@@ -71,25 +70,40 @@ public class MainActivity extends AppCompatActivity {
         NavigationView navigationView = findViewById(R.id.nvView);
         drawer = findViewById(R.id.drawer);
 
+        drawer.addDrawerListener(new DrawerLayout.DrawerListener() {
+            @Override
+            public void onDrawerSlide(@NonNull View drawerView, float slideOffset) { }
+            @Override
+            public void onDrawerOpened(@NonNull View drawerView) { }
+            @Override
+            public void onDrawerClosed(@NonNull View drawerView) { updateFragment(); }
+            @Override
+            public void onDrawerStateChanged(int newState) { }
+        });
+
         drawerToggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerToggle.setDrawerIndicatorEnabled(true);
         drawerToggle.syncState();
         drawer.addDrawerListener(drawerToggle);
 
-        selectDrawerItem(navigationView.getMenu().getItem(0));
-        initDrawerContent(navigationView);
         navigationView.setItemIconTintList(null);
+
+        initDrawerContent(navigationView);
+        initStartFragment(navigationView);
     }
 
     private void initDrawerContent(NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(
-            new NavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                    selectDrawerItem(menuItem);
-                    return true;
-                }
+            menuItem -> {
+                selectDrawerItem(menuItem);
+                return true;
             });
+    }
+
+    private void initStartFragment(NavigationView navigationView){
+        selectDrawerItem(navigationView.getMenu().getItem(0));
+        currentFragment = new FragmentHookahList();
+        updateFragment();
     }
 
     //endregion INIT
@@ -97,19 +111,23 @@ public class MainActivity extends AppCompatActivity {
     //region ******************** HELPERS **********************************************************
 
     public void selectDrawerItem(MenuItem menuItem) {
-        Fragment fragment;
         switch(menuItem.getItemId()) {
-            case R.id.menuAuthor: fragment = new FragmentAuthor(); break;
-            case R.id.menuFeedback: fragment = new FragmentFeedback(); break;
-            case R.id.menuOrders: fragment = new FragmentMyOrders(); break;
-            default: fragment = new FragmentHookahList(); break;
+            case R.id.menuAuthor: currentFragment = new FragmentAuthor(); break;
+            case R.id.menuFeedback: currentFragment = new FragmentFeedback(); break;
+            case R.id.menuOrders: currentFragment = new FragmentMyOrders(); break;
+            default: currentFragment = new FragmentHookahList(); break;
         }
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.content, fragment).commit();
-
         menuItem.setChecked(true);
         setTitle(menuItem.getTitle());
         drawer.closeDrawers();
+    }
+
+    private void updateFragment(){
+        if (currentFragment != null){
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.content, currentFragment).commit();
+        }
+        currentFragment = null;
     }
 
     //endregion HELPERS

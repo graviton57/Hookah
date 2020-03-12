@@ -20,21 +20,21 @@ public class HookahAdapter extends RecyclerView.Adapter<HookahAdapter.HookahView
     private List<Hookah> hookahs;
     private ClickListener listener;
 
-    public void setArticles(List<Hookah> hookahs) {
-        this.hookahs = hookahs;
-        notifyDataSetChanged();
-    }
 
     public HookahAdapter(List<Hookah> hookahs, ClickListener listener) {
         this.hookahs = hookahs;
         this.listener = listener;
     }
 
+    public void setArticles(List<Hookah> hookahs) {
+        this.hookahs = hookahs;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public HookahAdapter.HookahViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_hookah, parent, false);
-        return new HookahViewHolder(v);
+        return new HookahViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_hookah, parent, false));
     }
 
     @Override
@@ -45,10 +45,6 @@ public class HookahAdapter extends RecyclerView.Adapter<HookahAdapter.HookahView
     @Override
     public int getItemCount() {
         return hookahs.size();
-    }
-
-    public interface ClickListener{
-        void click(Hookah hookah);
     }
 
     static class HookahViewHolder extends RecyclerView.ViewHolder {
@@ -75,5 +71,9 @@ public class HookahAdapter extends RecyclerView.Adapter<HookahAdapter.HookahView
 
             itemView.setOnClickListener(v -> listener.click(hookah));
         }
+    }
+
+    public interface ClickListener{
+        void click(Hookah hookah);
     }
 }
